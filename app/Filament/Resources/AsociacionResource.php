@@ -28,6 +28,7 @@ class AsociacionResource extends Resource
     protected static ?int $navigationSort = 121;
     protected static ?string $navigationIcon = 'heroicon-o-users';
     protected static ?string $navigationGroup = 'System Manager';
+    protected static ?string $label = 'Asociaciones';
 
     public static function getNavigationBadge(): ?string
     {
@@ -39,7 +40,7 @@ class AsociacionResource extends Resource
         return $form
             ->schema([
                 Section::make('Datos Asociación')
-                    ->columns(4)
+                    ->columns(3)
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->required()
@@ -59,6 +60,9 @@ class AsociacionResource extends Resource
                             ->required()
                             ->label('Teléfono')
                             ->maxLength(255),
+                        Forms\Components\FileUpload::make('logo')
+                            ->image()
+                            ->directory('logos')
                     ]),
                 Section::make('Address Info')
                     ->columns(3)
@@ -103,6 +107,7 @@ class AsociacionResource extends Resource
                         Forms\Components\FileUpload::make('documents')
                             ->columns(1)
                             ->multiple()
+                            ->acceptedFileTypes(['application/pdf'])
                             ->label('Documentos')
                             ->directory('asociaciones')
                             ->preserveFilenames(),
@@ -114,6 +119,7 @@ class AsociacionResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('logo')->circular()->height(100),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nombre')
                     ->searchable(),

@@ -28,7 +28,8 @@ class BeneficiarioResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
     protected static ?int $navigationSort = 103;
     protected static ?string $navigationGroup = 'Proyectos';
-
+    protected static ?string $label = 'Beneficiarios';
+    
     public static function getNavigationBadge(): ?string
     {
         return static::getModel()::count();
@@ -110,6 +111,7 @@ class BeneficiarioResource extends Resource
                             ->columns(1)
                             ->label('Documentos')
                             ->multiple()
+                            ->openable()
                             ->directory('beneficiarios')
                             ->preserveFilenames(),
                     ])

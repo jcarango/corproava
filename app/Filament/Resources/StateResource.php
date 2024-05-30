@@ -19,7 +19,8 @@ class StateResource extends Resource
     protected static ?int $navigationSort = 151;
     protected static ?string $navigationIcon = 'heroicon-o-map-pin';
     protected static ?string $navigationGroup = 'System Manager';
-
+    protected static ?string $label = 'Departamento';
+    
     public static function getNavigationBadge(): ?string
     {
         return static::getModel()::count();

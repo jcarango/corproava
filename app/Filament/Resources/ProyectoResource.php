@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 
 class ProyectoResource extends Resource
 {
@@ -48,11 +49,13 @@ class ProyectoResource extends Resource
                     ->label('Plan de Trabajo')
                     ->maxLength(255),
                 Forms\Components\Select::make('beneficiario_id')
-                    ->label('Beneficiario')
+                    ->multiple()
+                    ->label('Beneficiarios')
                     ->relationship('beneficiario', 'name'),
-                Forms\Components\Select::make('profesionale_id')
-                    ->label('Profesional')
-                    ->relationship('profesionale', 'name'),
+                Forms\Components\Select::make('profesionales')
+                    ->multiple()
+                    ->label('Profesionales')
+                    ->relationship('profesionales', 'name'),
                 Forms\Components\Select::make('estado_proyecto_id')
                     ->label('Estado Proyectos')
                     ->relationship('estadoProyecto', 'name')
@@ -81,9 +84,9 @@ class ProyectoResource extends Resource
                     ->numeric()
                     ->label('Beneficiario')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('profesionale.name')
+                Tables\Columns\TextColumn::make('profesionales.name')
                     ->numeric()
-                    ->label('Profesional')
+                    ->label('Profesionales')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('estadoProyecto.name')
                     ->numeric()

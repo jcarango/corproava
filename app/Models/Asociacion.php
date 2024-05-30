@@ -14,6 +14,7 @@ class Asociacion extends Model
     protected $fillable = [
         'name',
         'contactname',
+        'logo',
         'email',
         'phone',
         'country_id',

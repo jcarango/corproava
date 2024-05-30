@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\belongsToMany;
 
 class Profesionale extends Model
 {
@@ -14,6 +15,7 @@ class Profesionale extends Model
         'name',
         'lastname',
         'profesion',
+        'image',
         'email',
         'phone',
         'address',
@@ -29,7 +31,7 @@ class Profesionale extends Model
 
     public function proyectos()
     {
-        return $this->belongsToMany(Proyecto::class);
+        return $this->belongsToMany(Proyecto::class, 'profesional_proyecto', 'profesionale_id', 'proyecto_id');
     }
 
     public function country(): BelongsTo

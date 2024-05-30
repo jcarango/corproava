@@ -19,7 +19,8 @@ class CountryResource extends Resource
     protected static ?int $navigationSort = 150;
     protected static ?string $navigationIcon = 'heroicon-o-globe-americas';
     protected static ?string $navigationGroup = 'System Manager';
-
+    protected static ?string $label ='Países';
+    
     public static function getNavigationBadge(): ?string
     {
         return static::getModel()::count();

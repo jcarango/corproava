@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\belongsToMany;
 
 class Proyecto extends Model
 {
@@ -21,14 +22,14 @@ class Proyecto extends Model
         'producto_id',
     ];
 
-    public function beneficiario(): BelongsTo
+    public function beneficiario()
     {
-        return $this->belongsTo(Beneficiario::class);
+        return $this->belongsToMany(Beneficiario::class);
     }
 
-    public function profesionale(): BelongsTo
+    public function profesionales()
     {
-        return $this->belongsTo(Profesionale::class);
+        return $this->belongsToMany(Profesionale::class, 'profesional_proyecto', 'proyecto_id', 'profesionale_id');
     }
 
     public function EstadoProyecto(): BelongsTo

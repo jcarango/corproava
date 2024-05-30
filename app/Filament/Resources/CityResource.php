@@ -19,7 +19,8 @@ class CityResource extends Resource
     protected static ?int $navigationSort = 152;
     protected static ?string $navigationIcon = 'heroicon-o-map';
     protected static ?string $navigationGroup = 'System Manager';
-
+    protected static ?string $label = 'Ciudades';
+    
     public static function getNavigationBadge(): ?string
     {
         return static::getModel()::count();
